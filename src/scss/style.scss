@@ -1,0 +1,110 @@
+﻿@import "~bootstrap/scss/bootstrap";
+
+
+#progress {
+    width: 100%;
+    height: 1em;
+    background: #eeeeee;
+    /*margin: 3px;*/
+}
+
+div.top {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 200%;
+    padding:0.5em;
+}
+.wmarg {
+    /*
+    margin-left:1em;
+    margin-right: 1em;
+    */
+    background-color: #eeffff;
+}
+
+span.progress {
+    display: inline-block;
+    width: 9.8%;
+    border-radius: 0;
+    margin: -2px;
+    padding: 0;
+}
+
+span.pl {
+    border-top-left-radius: 9px;
+    border-bottom-left-radius: 9px;
+}
+
+span.pr {
+    border-top-right-radius: 9px;
+    border-bottom-right-radius: 9px;
+    
+}
+
+span.progress2 {
+    background: #0e0eee;
+}
+
+div.ynb {
+    text-align: center;
+    margin-left: 0em;
+    margin-bottom: 2.5em;
+}
+div.ret {
+    text-align: center;
+    margin-left: 0em;
+    margin-bottom: 2.5em;
+}
+
+button.mbtn {
+    width: 12em;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    font-size: 160%;
+}
+
+div.inputs {
+    margin: 1em 0 2em 1em; 
+}
+
+div.quest {
+    padding: 1em;
+    margin: 1em;
+    height: 5.5em;
+    font-size: 140%;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+}
+
+div.progress-wrapper {
+    margin-top: 0.5em;
+    margin-bottom: 1em;
+}
+
+div.pnb {
+    text-align: center;
+    margin-left: 0em;
+    margin-bottom: 0.5em;
+}
+div.pnbp {
+    float: left;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+div.pnbn {
+    float: right;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+.clear {
+    clear: both;
+}
+
+div.logo {
+    text-align: center;
+    margin-top: 2em;
+}
