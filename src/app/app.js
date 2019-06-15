@@ -13,6 +13,7 @@ Vue.use(VuejsDialog)
 import MainTopList from '../vue/main.vue';
 import ModalWindow from '../vue/modal.vue';
 import TypeMnqw from '../vue/typemnqw.vue';
+import TypeHdrs from '../vue/typehdrs.vue';
 
 
 function application() {
@@ -40,6 +41,7 @@ application.prototype.init = async function() {
 
 Vue.component('modal-window', ModalWindow);
 Vue.component('q-tmpl-type-mnqw', TypeMnqw);
+Vue.component('q-tmpl-type-hdrs', TypeHdrs);
 
 
 

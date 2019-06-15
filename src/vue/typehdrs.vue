@@ -48,16 +48,17 @@
     <div class="quest">
          {{state}}) {{qData[state-1].text}}
     </div>
-    <div class="ynb">
-    <div>
-        <button id="b_yea" :class="qData[state-1].answer=='yes'?'btn-primary mbtn':'btn-secondary mbtn'"
-            @click="fyes()">Yes</button>
+
+    <div class="ynb radios">
+        <!-- radio inputs array here -->
+
+        <div v-for="ans in qData[state-1].answers">
+            <label>{{ans.text}}</label>
+            <input type="radio" @click="aclick(ans.val)" v-model="answer" :value="ans.val"/>
+        </div>
+
     </div>
-    <div>
-        <button id="b_no" :class="qData[state-1].answer=='no'?'btn-primary mbtn':'btn-secondary mbtn'"
-            @click="fno()">No</button>
-    </div>
-    </div>
+
     <div class="pnb">
         <div class="pnbp">
         <button id="b_prev" class="btn-primary mbtn" @click="prev(state)">Previous</button>
@@ -109,7 +110,8 @@ export default {
             endt: 0,
             score: 0,
             qData: [],
-            qLen: 0
+            qLen: 0,
+            answer: ''
         };
     },
     mounted: async function() {
@@ -149,7 +151,7 @@ export default {
 
 
                 if(!this.qData[this.state-1].answer) {
-                    Vue.dialog.alert('Click Yes or No');
+                    Vue.dialog.alert('Select answer');
                     return;
                 }
                 if(st < 2) {
@@ -163,6 +165,7 @@ export default {
                 this.endt = Math.floor(new Date() / 1000);
 
         },
+        /*
         fyes: function() {
             if (this.state > 0 && this.state < 1 + this.qLen)
                 this.qData[this.state-1].answer = 'yes';
@@ -170,6 +173,11 @@ export default {
         fno: function() {
             if (this.state > 0 && this.state < 1 + this.qLen)
                 this.qData[this.state-1].answer = 'no';
+        },
+        */
+        aclick: function(v) {
+            console.log("aclick", v);
+            this.qData[this.state-1].answer = v;
         },
         toadmin: async function() {
 
