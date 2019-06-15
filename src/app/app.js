@@ -6,11 +6,13 @@ import VeeValidate, { Validator } from 'vee-validate';
 Vue.use(VeeValidate);
 Validator.localize('en', en);
 
-import VuejsDialog from "vuejs-dialog" 
+import VuejsDialog from "vuejs-dialog"
 Vue.use(VuejsDialog)
 
 
-import MainTop from '../vue/main.vue';
+import MainTopList from '../vue/main.vue';
+import ModalWindow from '../vue/modal.vue';
+import TypeMnqw from '../vue/typemnqw.vue';
 
 
 function application() {
@@ -19,12 +21,32 @@ function application() {
 
 var app = new application();
 
+application.prototype.init = async function() {
+    var p = {
+        init: 1
+    };
+    return new Promise((resolve, reject) => {
+
+        $.ajax({url:'cntr/gwdata.php', type:'POST',data:p, dataType:'json'}).
+        done(function(data){
+            resolve(data);
+        }).
+        fail(function(e) {
+            console.log('init - ajax error', e);
+            reject(e);
+        });
+    });
+}
+
+Vue.component('modal-window', ModalWindow);
+Vue.component('q-tmpl-type-mnqw', TypeMnqw);
+
 
 
 new Vue({
   el: '#app-main-top',
   components: {
-    'app-main-top': MainTop
+    'app-main-top': MainTopList
   }
 });
 
