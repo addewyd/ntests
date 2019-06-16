@@ -1,6 +1,7 @@
 ﻿var  qMnqw =
         function()  {
         return {
+            type: 'ORT',
             q: [
                 {
                     text: 'Family history of substance abuse? Alcohol',
@@ -69,13 +70,14 @@
 }
 
 var  qGds = function() {
-        return { q:
+        return {
+                type: 'GDS',
+                q:
                     [
                 {
                     text: 'Psychological Disease: Do you have a history of Depression?',
                     answer: false,
-                    scoref: 1,
-                    scorem: 1
+                    score: 1
                 }
 
                     ],
@@ -85,7 +87,9 @@ var  qGds = function() {
 }
 
 var  qHdrs = function() {
-        return { q:
+        return {
+                type: 'HDRS',
+                q:
                     [
                 {
                         text: "Depressed mood",
@@ -96,9 +100,24 @@ var  qHdrs = function() {
                             {text:"Communicates...", val: 4},
                             {text:"Patient...", val: 5}],
                     answer: false
+                    // answerm
+                    // answerf
                 },
+                {
+                        text: "Feelings of guilt",
+                        answers: [
+                            {text:"Absent", val: 1},
+                            {text:"Self reroach...", val: 2},
+                            {text:"Ideas of guilt...", val: 3},
+                            {text:"predent illness...", val: 4},
+                            {text:"Hears...", val: 5}],
+                    answer: false
+                    // answerm
+                    // answerf
+                }
                     ],
-                    title: "HDRS"
+                    title: "HDRS",
+                    withgender: false
                 }
             }
 export { qMnqw, qGds, qHdrs };

@@ -1,17 +1,17 @@
 ﻿<template>
 <div>
     <div class="top">
-        {{oData.title}}<span v-if="gender"> ({{gender}})</span>
+        {{oData.title}}<span v-if="gender && wg"> ({{gender}})</span>
         <br />
-        <span v-if="gender">
-            [ORT{{gender[0]}}]
+        <span v-if="gender && wg">
+            [{{oData.type}}{{gender[0]}}]
         </span>
         <span v-else="">
-            [ORT]
+            [oData.type]
         </span>
     </div>
 <div v-if="admin_mode">
-    Score: {{score}} ({{gender}})
+    Score: {{score}} <span v-if="wg">({{gender}})</span>
     <div v-if="showlist" style="margin: 1em">
         <div v-for="f in pdffiles" style="margin: 3 px;">
             <a :href="f[0]">{{f[1]}}</a>
@@ -39,10 +39,12 @@
         <input type="date" id="g_date" name="fdate"
             v-model="fdate" style="margin: 0 1em;width:12em;-webkit-appearance: menulist"/>
         </span>
+        <span v-if="wg">
         <label for="g_one">Female </label>
         <input type="radio" id="g_one" value="Female" v-model="gender" />
         <label for="g_two">Male </label>
         <input type="radio" id="g_two" value="Male" v-model="gender" />
+        </span>
         <button @click="hideinputs()">Hide</button>
     </div>
     <div class="quest">
@@ -109,12 +111,14 @@ export default {
             endt: 0,
             score: 0,
             qData: [],
+            wg: false,
             qLen: 0
         };
     },
     mounted: async function() {
         this.qData = this.oData.q;
         this.qLen = this.qData.length;
+        this.wg = this.oData.withgender;
         var pp = await app.init();
         this.p = pp['result'];
         var d = new Date();
@@ -122,9 +126,16 @@ export default {
     },
     methods: {
         hideinputs: function() {
-            if(this.gender === '' || this.fname === '') {
-                Vue.dialog.alert('Please type Name and choose gender');
-                return;
+            if(this.wg) {
+                if(this.gender === '' || this.fname === '') {
+                    Vue.dialog.alert('Please type Name and choose gender');
+                    return;
+                }
+            } else {
+                if(this.fname === '') {
+                    Vue.dialog.alert('Please type Name');
+                    return;
+                }
             }
             this.show_inputs = false;
         },
@@ -134,7 +145,7 @@ export default {
             }
         },
         nxt: function(st) {
-            if(this.gender === '') {
+            if(this.gender === '' && this.wg) {
                 Vue.dialog.alert('Please choose your gender');
                 return;
             }
@@ -181,16 +192,16 @@ export default {
                     return a + (b.answer === 'yes' ? b.scoref : 0);
                 }
                 else {
-                    return 0;
+                    return a + (b.answer === 'yes' ? b.score : 0);
                 }
             }, 0);
             this.score = score;
-            var saveresult = await app.save(
-
+            var saveresult = await app.save_tm(
+                    this.oData.type,
                     this.qData,
                     this.fname,
                     this.fdate,
-                    this.gender,
+                    this.gender, // M, F, or ''
                     this.endt - this.startt,
                     this.score
             );

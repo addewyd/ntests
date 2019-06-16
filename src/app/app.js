@@ -39,6 +39,61 @@ application.prototype.init = async function() {
     });
 }
 
+application.prototype.save_tm = async function(type, data, fname, fdate, gender, dur, score) {
+    var fn = Utils.escape_RegExp(fname);
+    var fd = Utils.escape_RegExp(fdate);
+
+    var p = {
+        type: type,
+        data: data,
+        fname: fn,
+        fdate: fd,
+        gender: gender,
+        dur: dur,
+        score: score
+    };
+    return new Promise((resolve, reject) => {
+
+        $.ajax({url:'cntr/gwdata.php', type:'POST',data:p, dataType:'json'}).
+        done(function(data){
+            resolve(data);
+        }).
+        fail(function(e) {
+            console.log('save ajax error', e);
+            reject(e);
+        });
+    });
+
+}
+
+application.prototype.save_hd = async function(type, data, fname, fdate, gender, dur, score) {
+    var fn = Utils.escape_RegExp(fname);
+    var fd = Utils.escape_RegExp(fdate);
+
+    var p = {
+        type: type,
+        data: data,
+        fname: fn,
+        fdate: fd,
+        gender: gender,
+        dur: dur,
+        score: score
+    };
+    return new Promise((resolve, reject) => {
+
+        $.ajax({url:'cntr/gwdata.php', type:'POST',data:p, dataType:'json'}).
+        done(function(data){
+            resolve(data);
+        }).
+        fail(function(e) {
+            console.log('save ajax error', e);
+            reject(e);
+        });
+    });
+
+}
+
+
 Vue.component('modal-window', ModalWindow);
 Vue.component('q-tmpl-type-mnqw', TypeMnqw);
 Vue.component('q-tmpl-type-hdrs', TypeHdrs);
