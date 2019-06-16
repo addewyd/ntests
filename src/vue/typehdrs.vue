@@ -145,6 +145,7 @@ export default {
         prev: function(st) {
             if(st > 1) {
                 this.state = st - 1;
+                this.answer = this.qData[this.state-1].answer ;
             }
         },
         nxt: function(st) {
@@ -174,6 +175,7 @@ export default {
                 } else {
                     this.state = this.qLen + 1;
                 }
+                this.answer = '';
                 this.endt = Math.floor(new Date() / 1000);
 
         },
@@ -237,7 +239,8 @@ export default {
             this.fname = '';
             this.fdate = '';
             this.gender = '';
-            this.qData.map(d => d.answer = false);
+            this.answer = false;
+            this.qData.map(d => d.answer = false); //?
         },
 
         login: function() {
