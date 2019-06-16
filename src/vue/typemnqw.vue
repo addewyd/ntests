@@ -93,7 +93,8 @@ import {app, Vue} from '../app/app';
 import * as Utils  from '../app/utils';
 export default {
     props: {
-        oData: Object
+        oData: Object,
+        shows: Object
     },
     data: function() {
         return {
@@ -223,6 +224,12 @@ export default {
         restart: function() {
             this.admin_mode = false;
             this.show_inputs = true;
+            Object.getOwnPropertyNames(this.shows).forEach( e => {
+                this.shows[e] = false;
+            })
+
+            this.shows.showTop = true;
+
             this.state = 1;
             this.fname = '';
             this.fdate = '';

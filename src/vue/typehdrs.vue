@@ -94,7 +94,8 @@ import {app, Vue} from '../app/app';
 import * as Utils  from '../app/utils';
 export default {
     props: {
-        oData: Object
+        oData: Object,
+        shows: Object
     },
     data: function() {
         return {
@@ -240,6 +241,10 @@ export default {
             this.fdate = '';
             this.gender = '';
             this.answer = false;
+            Object.getOwnPropertyNames(this.shows).forEach( e => {
+                this.shows[e] = false;
+            })
+            this.shows.showTop = true;
             this.qData.map(d => d.answer = false); //?
         },
 
