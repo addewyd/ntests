@@ -25,7 +25,7 @@
     <div class="progress-wrapper">
     progress
     <div id="progress">
-        <span :style="'width:'+(qLen*(state-1))+'%;background-color:#0e0eee;display:inline-block;height:100%;border-radius:6px/50%'"> </span>
+        <span :style="'width:'+((100/qLen)*(state-1))+'%;background-color:#0e0eee;display:inline-block;height:100%;border-radius:6px/50%'"> </span>
     </div>
     </div>
 
