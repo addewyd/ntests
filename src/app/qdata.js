@@ -75,7 +75,77 @@ var  qGds = function() {
                 q:
                     [
                 {
-                    text: 'Psychological Disease: Do you have a history of Depression?',
+                    text: 'Are you basically satisfied with your life?', //1
+                    answer: false,
+                    score: -1
+                },
+                {
+                    text: 'Have you dropped many of your activities and interests?',//2
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Do you feel that your life is empty?',//3
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Do you often get bored?',//4
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Are you in good spirits most of the time?',//5
+                    answer: false,
+                    score: -1
+                },
+                {
+                    text: 'Are you afraid that something bad is going to happen to you?',//6
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Do you feel happy most of the time?',//7
+                    answer: false,
+                    score: -1
+                },
+                {
+                    text: 'Do you often feel helpless?',//8
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Do you prefer to stay at home, rather than going out and doing things?',//9
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Do you feel that you have more problems with memory than most?',//10
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Do you think it is wonderful to be alive now?',//11
+                    answer: false,
+                    score: -1
+                },
+                {
+                    text: 'Do you feel worthless the way you are now?',//12
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Do you feel full of energy?',//13
+                    answer: false,
+                    score: -1
+                },
+                {
+                    text: 'Do you feel that your situation is hopeless?',//14
+                    answer: false,
+                    score: 1
+                },
+                {
+                    text: 'Do you think that most people are better off than you are?',//15
                     answer: false,
                     score: 1
                 }
@@ -95,16 +165,28 @@ var  qHdrs = function() {
                         text: "Depressed mood",
                         answers: [
                             {text:"Absent", val: 1},
-                            {text:"These feeling...", val: 2},
-                            {text:"These feeling...", val: 3},
-                            {text:"Communicates...", val: 4},
-                            {text:"Patient...", val: 5}],
+                            {text:"These feeling states indicated only on questioning.", val: 2},
+                            {text:"These feeling states spontaneously reported verbally.", val: 3},
+                            {text:"Communicates feeling states non-verbally. i.e. through facial expression, posture, voice and tendency to weep.", val: 4},
+                            {text:"Patient reports virtually only these feeling states in his/her spontaneous verbal and non-verbal communication.", val: 5}],
                     answer: false
                     // answerm
                     // answerf
                 },
                 {
                         text: "Feelings of guilt",
+                        answers: [
+                            {text:"Absent", val: 1},
+                            {text:"Self reroach...", val: 2},
+                            {text:"Ideas of guilt...", val: 3},
+                            {text:"predent illness...", val: 4},
+                            {text:"Hears...", val: 5}],
+                    answer: false
+                    // answerm
+                    // answerf
+                },
+                {
+                        text: "Suicide",
                         answers: [
                             {text:"Absent", val: 1},
                             {text:"Self reroach...", val: 2},

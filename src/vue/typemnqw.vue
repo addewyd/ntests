@@ -25,7 +25,7 @@
     <div class="progress-wrapper">
     progress
     <div id="progress">
-        <span :style="'width:'+(qLen*(state-1))+'%;background-color:#0e0eee;display:inline-block;height:100%;border-radius:6px/50%'"> </span>
+        <span :style="'width:'+((100/qLen)*(state-1))+'%;background-color:#0e0eee;display:inline-block;height:100%;border-radius:6px/50%'"> </span>
     </div>
     </div>
 
@@ -184,8 +184,9 @@ export default {
                 this.qData[this.state-1].answer = 'no';
         },
         toadmin: async function() {
-
-            var score = this.qData.reduce((a, b) => {
+            var score = 0;
+            if(this.oData.type === 'ORT') {
+            score = this.qData.reduce((a, b) => {
                 if(this.gender === 'Male') {
                     return a + (b.answer === 'yes'? b.scorem : 0);
                 }
@@ -196,7 +197,17 @@ export default {
                     return a + (b.answer === 'yes' ? b.score : 0);
                 }
             }, 0);
+            }
+            if(this.oData.type === 'GDS') {
+                score = this.qData.reduce((a, b) => {
+                    //return a + (b.answer === 'yes' ? b.score : 0);
+                    if(b.answer === 'yes' && b.score > 0) return a + b.score;
+                    if(b.answer === 'no' && b.score < 0) return a - b.score;
+                    return a+0;
+                }, 0);
+            }
             this.score = score;
+console.log('score', score);
             var saveresult = await app.save_tm(
                     this.oData.type,
                     this.qData,
