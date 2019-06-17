@@ -8,7 +8,7 @@
         <li class="tlist"><button @click="mnqw()">mnqw (ORT)</button></li>
         <li class="tlist"><button @click="gds()">gds</button></li>
         <li class="tlist"><button @click="hdrs()">HDRS</button></li>
-        <li class="tlist">1</li>
+        <li class="tlist"><button @click="phq9()">PHQ9</button></li>
         <li class="tlist">1</li>
         <li class="tlist">1</li>
         <li class="tlist">1</li>
@@ -30,6 +30,11 @@
            <q-tmpl-type-hdrs :oData="qData" :shows="shows"></q-tmpl-type-hdrs>
         </div>
     </modal-window>
+    <modal-window v-if="shows.showPhq9" @close="shows.showPhq9 = false">
+        <div slot="body">
+           <q-tmpl-type-hdrs :oData="qData" :shows="shows"></q-tmpl-type-hdrs>
+        </div>
+    </modal-window>
 
 </div>
 </template>
@@ -47,6 +52,7 @@ export default {
         showMnqw: false,
         showGds: false,
         showHdrs: false,
+        showPhq9: false,
         showTop: true
         }
        }
@@ -68,6 +74,12 @@ export default {
             console.log('hdrs');
             this.qData = Q.qHdrs();
             this.shows.showHdrs = true;
+            this.shows.showTop = false;
+        },
+        phq9: function() {
+            console.log('phq9');
+            this.qData = Q.qPhq9();
+            this.shows.showPhq9 = true;
             this.shows.showTop = false;
         }
     }

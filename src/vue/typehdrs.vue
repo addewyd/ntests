@@ -47,6 +47,7 @@
         </span>
         <button @click="hideinputs()">Hide</button>
     </div>
+    <div class="addinfo" v-if="oData.addinfo">{{oData.addinfo}}</div>
     <div class="quest">
          {{state}}) {{qData[state-1].text}}
     </div>

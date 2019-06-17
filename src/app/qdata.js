@@ -362,7 +362,30 @@ var  qHdrs = function() {
                 }
                     ],
                     title: "Hamilton Depression Rating Scale",
+                    addinfo: false,
                     withgender: false
                 }
             }
-export { qMnqw, qGds, qHdrs };
+
+var  qPhq9 = function() {
+        return {
+                type: 'PHQ9',
+                q:[
+                    {
+                        text: "Little interest or pleasure in doing things",//1
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    }
+                ],
+                    title: "PATIENT HEALTH QUESTIONNAIRE (PHQ-9)",
+                    addinfo: 'Over the last 2 weeks, how often have you been bothered by any of the following problems?',
+                    withgender: false
+                }
+            }
+
+export { qMnqw, qGds, qHdrs, qPhq9 };
