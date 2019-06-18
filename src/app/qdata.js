@@ -693,4 +693,139 @@ var  qSds = function() { // scoring? There are ten positively worded and ten neg
                 }
             }
 
-export { qMnqw, qGds, qHdrs, qPhq9, qSds };
+var  qEpds = function() {
+        return {
+                type: 'EPDS',
+                q:[
+                    {
+                        text: "I have been able to laugh and see the funny side of things",//1
+                        answers: [
+                            {text:"As much as I always could", val: 1},
+                            {text:"Not quite so much now", val: 2},
+                            {text:"Definitely not so much now", val: 3},
+                            {text:"Not at all", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have looked forward with enjoyment to things",//2
+                        answers: [
+                            {text:"As much as I ever did", val: 1},
+                            {text:"Rather less than I used to", val: 2},
+                            {text:"Definitely less than I used to", val: 3},
+                            {text:"Hardly at all", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have blamed myself unnecessarily when things went wrong",//3
+                        answers: [ //* reverse order
+                            {text:"Yes, most of the time", val: 4},
+                            {text:"Yes, some of the time", val: 3},
+                            {text:"Not very often", val: 2},
+                            {text:"No, never", val: 1}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have been anxious or worried for no good reason",//4
+                        answers: [
+                            {text:"No, not at all", val: 1},
+                            {text:"Hardly ever", val: 2},
+                            {text:"Yes, sometimes", val: 3},
+                            {text:"Yes, very often", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have felt scared or panicky for no very good reason",//5
+                        answers: [ //* reverse order
+                            {text:"Yes, quite a lot", val: 4},
+                            {text:"Yes, sometimes", val: 3},
+                            {text:"No, not much", val: 2},
+                            {text:"No, not at all", val: 1}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Things have been getting on top of me",//6
+                        answers: [ //* reverse order
+                            {text:"Yes, most of the time I haven't been able to cope at all", val: 4},
+                            {text:"Yes, sometimes I haven't been coping as well as usual", val: 3},
+                            {text:"No, most of the time I have coped quite well", val: 2},
+                            {text:"No, I have been coping as well as ever", val: 1}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have been so unhappy that I have had difficulty sleeping",//7
+                        answers: [ //* reverse order
+                            {text:"Yes, most of the time", val: 4},
+                            {text:"Yes, sometimes", val: 3},
+                            {text:"Not very often", val: 2},
+                            {text:"No, not at all", val: 1}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have felt sad or miserable",//8
+                        answers: [ //* reverse order
+                            {text:"Yes, most of the time", val: 4},
+                            {text:"Yes, quite often", val: 3},
+                            {text:"Not very often", val: 2},
+                            {text:"No, not at all", val: 1}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have been so unhappy that I have been crying",//9
+                        answers: [ //* reverse order
+                            {text:"Yes, most of the time", val: 4},
+                            {text:"Yes, quite often", val: 3},
+                            {text:"Only occasionally", val: 2},
+                            {text:"No, never", val: 1}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "The thought of harming myself has occurred to me",//10
+                        answers: [ //* reverse order
+                            {text:"Yes, quite often", val: 4},
+                            {text:"Sometimes", val: 3},
+                            {text:"Hardly ever", val: 2},
+                            {text:"Never", val: 1}
+                        ],
+                    answer: false
+                    }
+                ],
+                    title: "Edinburgh Postnatal Depression Scale (EPDS)",
+                    addinfo: 'As you are pregnant or have recently had a baby, we would like to know how you are feeling. Please check the answer that comes closest to how you have felt IN THE PAST 7 DAYS, not just how you feel today.',
+                    withgender: false,
+                    addsco: false
+                }
+            }
+
+var  qBdi = function() {
+        return {
+                type: 'BDI',
+                q:[
+                    {
+                        text: "",//1
+                        answers: [
+                            {text:"I do not feel sad", val: 1},
+                            {text:"I feel sad", val: 2},
+                            {text:"I am sad all the time and I can't snap out of it", val: 3},
+                            {text:"I am so sad and unhappy that I can't stand it", val: 4}
+                        ],
+                    answer: false
+                    }
+
+                ],
+                    title: "Beck's Depression Inventory",
+                    addinfo: 'This depression inventory can be self-scored. The scoring scale is at the end of the questionnaire.',
+                    withgender: false,
+                    addsco: false
+                }
+            }
+
+export { qMnqw, qGds, qHdrs, qPhq9, qSds, qEpds, qBdi };

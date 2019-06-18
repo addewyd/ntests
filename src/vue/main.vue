@@ -10,8 +10,8 @@
         <li class="tlist"><button class="btn btn-primary" @click="hdrs()">HDRS</button></li>
         <li class="tlist"><button class="btn btn-primary" @click="phq9()">PHQ9</button></li>
         <li class="tlist"><button class="btn btn-primary" @click="sds()">SDS</button></li>
-        <li class="tlist">1</li>
-        <li class="tlist">1</li>
+        <li class="tlist"><button class="btn btn-primary" @click="epds()">EPDS</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="bdi()">BDI</button></li>
     </ul>
     </div>
 
@@ -40,6 +40,16 @@
            <q-tmpl-type-hdrs :oData="qData" :shows="shows"></q-tmpl-type-hdrs>
         </div>
     </modal-window>
+    <modal-window v-if="shows.showEpds" @close="shows.showEpds = false">
+        <div slot="body">
+           <q-tmpl-type-hdrs :oData="qData" :shows="shows"></q-tmpl-type-hdrs>
+        </div>
+    </modal-window>
+    <modal-window v-if="shows.showBdi" @close="shows.showBdi = false">
+        <div slot="body">
+           <q-tmpl-type-hdrs :oData="qData" :shows="shows"></q-tmpl-type-hdrs>
+        </div>
+    </modal-window>
 
 </div>
 </template>
@@ -59,6 +69,8 @@ export default {
         showHdrs: false,
         showPhq9: false,
         showSds: false,
+        showEpds: false,
+        showBdi: false,
         showTop: true
         }
        }
@@ -92,6 +104,18 @@ export default {
             console.log('sds');
             this.qData = Q.qSds();
             this.shows.showSds = true;
+            this.shows.showTop = false;
+        },
+        epds: function() {
+            console.log('epds');
+            this.qData = Q.qEpds();
+            this.shows.showEpds = true;
+            this.shows.showTop = false;
+        },
+        bdi: function() {
+            console.log('bdi');
+            this.qData = Q.qBdi();
+            this.shows.showBdi = true;
             this.shows.showTop = false;
         }
     }
