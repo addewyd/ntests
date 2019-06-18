@@ -39,7 +39,7 @@ span.pl {
 span.pr {
     border-top-right-radius: 9px;
     border-bottom-right-radius: 9px;
-    
+
 }
 
 span.progress2 {
@@ -51,6 +51,14 @@ div.ynb {
     margin-left: 0em;
     margin-bottom: 2.5em;
 }
+
+div.radios {
+    text-align: left;
+    margin-left: 3.5em;
+    margin-bottom: 2.5em;
+    font-size: 120%;
+}
+
 div.ret {
     text-align: center;
     margin-left: 0em;
@@ -66,7 +74,7 @@ button.mbtn {
 }
 
 div.inputs {
-    margin: 1em 0 2em 1em; 
+    margin: 1em 0 2em 1em;
 }
 
 div.quest {
@@ -107,4 +115,13 @@ div.pnbn {
 div.logo {
     text-align: center;
     margin-top: 2em;
+}
+
+li.tlist {
+    display: block;
+    margin: 0.5em;
+}
+
+ul.tlist {
+    margin: 1em 3em 0em 1em;
 }

@@ -4,12 +4,12 @@
     <div class="top">
         ntests
     </div>
-    <ul>
-        <li class="tlist"><button @click="mnqw()">mnqw (ORT)</button></li>
-        <li class="tlist"><button @click="gds()">gds</button></li>
-        <li class="tlist"><button @click="hdrs()">HDRS</button></li>
-        <li class="tlist"><button @click="phq9()">PHQ9</button></li>
-        <li class="tlist">1</li>
+    <ul class="tlist">
+        <li class="tlist"><button class="btn btn-primary" @click="mnqw()">mnqw (ORT)</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="gds()">gds</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="hdrs()">HDRS</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="phq9()">PHQ9</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="sds()">SDS</button></li>
         <li class="tlist">1</li>
         <li class="tlist">1</li>
     </ul>
@@ -35,6 +35,11 @@
            <q-tmpl-type-hdrs :oData="qData" :shows="shows"></q-tmpl-type-hdrs>
         </div>
     </modal-window>
+    <modal-window v-if="shows.showSds" @close="shows.showSds = false">
+        <div slot="body">
+           <q-tmpl-type-hdrs :oData="qData" :shows="shows"></q-tmpl-type-hdrs>
+        </div>
+    </modal-window>
 
 </div>
 </template>
@@ -53,6 +58,7 @@ export default {
         showGds: false,
         showHdrs: false,
         showPhq9: false,
+        showSds: false,
         showTop: true
         }
        }
@@ -80,6 +86,12 @@ export default {
             console.log('phq9');
             this.qData = Q.qPhq9();
             this.shows.showPhq9 = true;
+            this.shows.showTop = false;
+        },
+        sds: function() {
+            console.log('sds');
+            this.qData = Q.qSds();
+            this.shows.showSds = true;
             this.shows.showTop = false;
         }
     }

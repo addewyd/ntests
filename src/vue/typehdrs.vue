@@ -52,7 +52,7 @@
          {{state}}) {{qData[state-1].text}}
     </div>
 
-    <div class="ynb radios">
+    <div class="radios">
         <!-- radio inputs array here -->
 
         <div v-for="ans in qData[state-1].answers">
@@ -208,7 +208,7 @@ export default {
                     return a + (b.answer ? b.answer-1 : 0);
                 }
             }, 0);
-            this.score = score;
+            this.score = score + (this.oData.addsco ? this.oData.addsco : 0); // for SDS
             console.log('hdscore', score);
             var saveresult = await app.save_hd(
                     this.oData.type,

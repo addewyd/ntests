@@ -380,7 +380,99 @@ var  qPhq9 = function() {
                             {text:"Nearly every day", val: 4}
                         ],
                     answer: false
+                    },
+                    {
+                        text: "Feeling down, depressed, or hopeless",//2
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Trouble falling or staying asleep, or sleeping too much",//3
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Feeling tired or having little energy",//4
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Poor appetite or overeating",//5
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",//6
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Trouble concentrating on things, such as reading the newspaper or watching television",//7
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Moving or speaking so slowly that other people could have noticed. Or the opposite being so figety or restless that you have been moving around a lot more than usual",//8
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Thoughts that you would be better off dead, or of hurting yourself",//9
+                        answers: [
+                            {text:"Not at all", val: 1},
+                            {text:"Several days", val: 2},
+                            {text:"More than half the days", val: 3},
+                            {text:"Nearly every day", val: 4}
+                        ],
+                    answer: false
+                    },
+                    // ??
+                    {
+                        text: "If you checked off any problems, how difficult have these problems made it for you to do your work, take care of things at home, or get along with other people?",//10
+                        answers: [
+                            {text:"Not difficult at all", val: 1},
+                            {text:"Somewhat difficult", val: 2},
+                            {text:"Very difficult", val: 3},
+                            {text:"Extremely difficult", val: 4}
+                        ],
+                    answer: false
                     }
+
                 ],
                     title: "PATIENT HEALTH QUESTIONNAIRE (PHQ-9)",
                     addinfo: 'Over the last 2 weeks, how often have you been bothered by any of the following problems?',
@@ -388,4 +480,217 @@ var  qPhq9 = function() {
                 }
             }
 
-export { qMnqw, qGds, qHdrs, qPhq9 };
+var  qSds = function() { // scoring? There are ten positively worded and ten negatively worded questions
+        return {
+                type: 'SDS',
+                q:[
+                    {
+                        text: "I feel down-hearted and blue",//1
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "Morning is when I feel the best",//2
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have crying spells or feel like it",//3
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have trouble sleeping at night",//4
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I eat as much as I used to",//5
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I still enjoy sex",//6
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I notice that I am losing weight",//7
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I have trouble with constipation",//8
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "My heart beats faster than usual",//9
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I get tired for no reason",//10
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "My mind is as clear as it used to be",//11
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I find it easy to do the things I used to",//12
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I am restless and can't keep still",//13
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I feel hopeful about the future",//14
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I am more irritable than usual",//15
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I find it easy to make decisions",//16
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I feel that I am useful and needed",//17
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "My life is pretty full",//18
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I feel that others would be better off if I were dead",//19
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "I still enjoy the things I used to do",//20
+                        answers: [
+                            {text:"A little of the time", val: 1},
+                            {text:"Some of the time", val: 2},
+                            {text:"Good part of the time", val: 3},
+                            {text:"Most of the time", val: 4}
+                        ],
+                    answer: false
+                    }
+
+                ],
+                    title: "Zung Self-Rating Depression Scale (SDS)",
+                    addinfo: 'For each item below, please place a check  the item which best describes how often you felt or behaved this way during the past several days',
+                    withgender: false,
+                    addsco: +1
+                }
+            }
+
+export { qMnqw, qGds, qHdrs, qPhq9, qSds };
