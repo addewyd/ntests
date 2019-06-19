@@ -66,7 +66,7 @@ application.prototype.save_tm = async function(type, data, fname, fdate, gender,
 
 }
 
-application.prototype.save_hd = async function(type, data, fname, fdate, gender, dur, score) {
+application.prototype.save_hd = async function(type, data, fname, fdate, gender, dur, score, title) {
     var fn = Utils.escape_RegExp(fname);
     var fd = Utils.escape_RegExp(fdate);
 

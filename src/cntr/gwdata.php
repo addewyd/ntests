@@ -93,12 +93,13 @@ function save_pdf($r) {
     $min = floor($dur / 60);
     $sec = $dur % 60;
     $score = $r['score'];
+    $title = $r['title'];
 
     $sdur = "$min min $sec sec";
 
     $dd = date_create();
     $ddate = date_format($dd, "Ymd-His");
-    $filename = '../saved/'.$fname."_" .$ddate;
+    $filename = '../saved/' . $type . '/' .$fname."_" .$ddate;
     //file_put_contents($filename, print_r($data,  true));
     $g = '';
     if($gender === '') {
@@ -110,12 +111,15 @@ function save_pdf($r) {
     $pdf = new FPDF();
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',16);
-    $pdf -> Cell(0, 10, 'Opioid Risk Tool (' . $gender . ')', 0, 1, 'C');
-    $pdf -> Cell(0, 10, '[ORT'.$g.']', 0, 1, 'C');
+    $gg = $gender==='' ? '' : ' (' . $gender . ')';
+    $pdf -> Cell(0, 10, 'Opioid Risk Tool ' . $gg , 0, 1, 'C');
+
+    $pdf -> Cell(0, 10, '[' . $type . $g.']', 0, 1, 'C');
+
     //$pdf->Output('F', $filename . '.pdf', true);
 
     $pdf->SetFont('Arial','', 8);
-
+// begin ort stuff
     $pdf->SetXY(10, 36);
     $pdf -> Cell(0, 0, 'Patient: ' . $fname, 0, 1, 'L');
     $pdf->SetXY(130, 36);
@@ -170,6 +174,7 @@ function save_pdf($r) {
     $pdf->SetFont('Arial','',7);
     $pdf -> Cell(0, 4, 'See patient record for medical findings', 0, 1, 'L');
     $pdf -> Ln();
+// end ort stuff
 
     $pdf->SetFont('Arial','B',14);
     $pdf -> Cell(0, 10, 'QUESTIONS', 0, 1, 'L');
@@ -182,7 +187,7 @@ function save_pdf($r) {
     }
 
     $s = $pdf->Output('S', $filename . '', true);
-    file_put_contents($filename . '_ort_grading.pdf', $s);
+    file_put_contents($filename . '_' . $type . '.pdf', $s);
  /*
     $pdf = new FPDF();
     $pdf->AddPage();

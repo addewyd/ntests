@@ -217,7 +217,8 @@ export default {
                     this.fdate,
                     this.gender,
                     this.endt - this.startt,
-                    this.score
+                    this.score,
+                    this.oData.title
             );
             var p = saveresult.files
             this.pdffiles = p.slice(0,30).map(

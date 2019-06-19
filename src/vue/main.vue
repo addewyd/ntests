@@ -5,14 +5,18 @@
         ntests
     </div>
     <ul class="tlist">
-        <li class="tlist"><button class="btn btn-primary" @click="mnqw()">mnqw (ORT)</button></li>
-        <li class="tlist"><button class="btn btn-primary" @click="gds()">gds</button></li>
-        <li class="tlist"><button class="btn btn-primary" @click="hdrs()">HDRS</button></li>
-        <li class="tlist"><button class="btn btn-primary" @click="phq9()">PHQ9</button></li>
-        <li class="tlist"><button class="btn btn-primary" @click="sds()">SDS</button></li>
-        <li class="tlist"><button class="btn btn-primary" @click="epds()">EPDS</button></li>
-        <li class="tlist"><button class="btn btn-primary" @click="bdi()">BDI</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="mnqw()">Opioid Risk Tool</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="gds()">Geriatric Depression Scale</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="hdrs()">Hamilton Depression Rating Scale</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="phq9()">PATIENT HEALTH QUESTIONNAIRE (PHQ-9)</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="sds()">Zung Self-Rating Depression Scale (SDS)</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="epds()">Edinburgh Postnatal Depression Scale (EPDS)</button></li>
+        <li class="tlist"><button class="btn btn-primary" @click="bdi()">Beck's Depression Inventory</button></li>
     </ul>
+    <div  class="logo">
+    <img src="img/ORTlogo.png" width="200" />
+    </div>
+
     </div>
 
     <modal-window v-if="shows.showMnqw" @close="shows.showMnqw = false">

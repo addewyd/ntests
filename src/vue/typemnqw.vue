@@ -7,7 +7,7 @@
             [{{oData.type}}{{gender[0]}}]
         </span>
         <span v-else="">
-            [oData.type]
+            [{{oData.type}}]
         </span>
     </div>
 <div v-if="admin_mode">
@@ -215,7 +215,8 @@ console.log('score', score);
                     this.fdate,
                     this.gender, // M, F, or ''
                     this.endt - this.startt,
-                    this.score
+                    this.score,
+                    this.oData.title
             );
             var p = saveresult.files
             this.pdffiles = p.slice(0,30).map(

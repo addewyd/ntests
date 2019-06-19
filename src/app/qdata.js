@@ -152,7 +152,8 @@ var  qGds = function() {
 
                     ],
             withgender: false,
-            title: "Gds"
+            title: "Geriatric Depression Scale",
+            addinfo: "Circle the answer that best describes how you felt over the past week"
         };
 }
 
@@ -816,6 +817,136 @@ var  qBdi = function() {
                             {text:"I feel sad", val: 2},
                             {text:"I am sad all the time and I can't snap out of it", val: 3},
                             {text:"I am so sad and unhappy that I can't stand it", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//2
+                        answers: [
+                            {text:"I am not particularly discouraged about the future", val: 1},
+                            {text:"I feel discouraged about the future", val: 2},
+                            {text:"I feel I have nothing to look forward to", val: 3},
+                            {text:"I feel the future is hopeless and that things cannot improve", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//3
+                        answers: [
+                            {text:"I do not feel like a failure", val: 1},
+                            {text:"I feel I have failed more than the average person", val: 2},
+                            {text:"As I look back on my life, all I can see is a lot of failures", val: 3},
+                            {text:"I feel I am a complete failure as a person", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//4
+                        answers: [
+                            {text:"I get as much satisfaction out of things as I used to", val: 1},
+                            {text:"I don't enjoy things the way I used to", val: 2},
+                            {text:"I don't get real satisfaction out of anything anymore", val: 3},
+                            {text:"I am dissatisfied or bored with everything", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//5
+                        answers: [
+                            {text:"I don't feel particularly guilty", val: 1},
+                            {text:"I feel guilty a good part of the time", val: 2},
+                            {text:"I feel quite guilty most of the time", val: 3},
+                            {text:"I feel guilty all of the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//6
+                        answers: [
+                            {text:"I don't feel I am being punished", val: 1},
+                            {text:"I feel I may be punished", val: 2},
+                            {text:"I expect to be punished", val: 3},
+                            {text:"I feel I am being punished", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//7
+                        answers: [
+                            {text:"I don't feel disappointed in myself", val: 1},
+                            {text:"I am disappointed in myself", val: 2},
+                            {text:"I am disgusted with myself", val: 3},
+                            {text:"I hate myself", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//8
+                        answers: [
+                            {text:"I don't feel I am any worse than anybody else", val: 1},
+                            {text:"I am critical of myself for my weaknesses or mistakes", val: 2},
+                            {text:"I blame myself all the time for my faults", val: 3},
+                            {text:"I blame myself for everything bad that happens", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//9
+                        answers: [
+                            {text:"I don't have any thoughts of killing myself", val: 1},
+                            {text:"I have thoughts of killing myself, but I would not carry them out", val: 2},
+                            {text:"I would like to kill myself", val: 3},
+                            {text:"I would kill myself if I had the chance", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//10
+                        answers: [
+                            {text:"I don't cry any more than usual", val: 1},
+                            {text:"I cry more now than I used to", val: 2},
+                            {text:"I cry all the time now", val: 3},
+                            {text:"I used to be able to cry, but now I can't cry even though I want to", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//11
+                        answers: [
+                            {text:"I am no more irritated by things than I ever was", val: 1},
+                            {text:"I am slightly more irritated now than usual", val: 2},
+                            {text:"I am quite annoyed or irritated a good deal of the time", val: 3},
+                            {text:"I feel irritated all the time", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//12
+                        answers: [
+                            {text:"I have not lost interest in other people", val: 1},
+                            {text:"I am less interested in other people than I used to be", val: 2},
+                            {text:"I have lost most of my interest in other people", val: 3},
+                            {text:"I have lost all of my interest in other people", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//13
+                        answers: [
+                            {text:"I make decisions about as well as I ever could", val: 1},
+                            {text:"I put off making decisions more than I used to", val: 2},
+                            {text:"I have greater difficulty in making decisions more than I used to", val: 3},
+                            {text:"I can't make decisions at all anymore", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//14
+                        answers: [
+                            {text:"I don't feel that I look any worse than I used to", val: 1},
+                            {text:"I am worried that I am looking old or unattractive", val: 2},
+                            {text:"I feel there are permanent changes in my appearance that make me look unattractive", val: 3},
+                            {text:"I believe that I look ugly", val: 4}
                         ],
                     answer: false
                     }
