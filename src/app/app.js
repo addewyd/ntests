@@ -39,7 +39,7 @@ application.prototype.init = async function() {
     });
 }
 
-application.prototype.save_tm = async function(type, data, fname, fdate, gender, dur, score) {
+application.prototype.save_tm = async function(type, data, fname, fdate, gender, dur, score, title) {
     var fn = Utils.escape_RegExp(fname);
     var fd = Utils.escape_RegExp(fdate);
 
@@ -50,7 +50,8 @@ application.prototype.save_tm = async function(type, data, fname, fdate, gender,
         fdate: fd,
         gender: gender,
         dur: dur,
-        score: score
+        score: score,
+        title: title
     };
     return new Promise((resolve, reject) => {
 
@@ -66,7 +67,7 @@ application.prototype.save_tm = async function(type, data, fname, fdate, gender,
 
 }
 
-application.prototype.save_hd = async function(type, data, fname, fdate, gender, dur, score, title) {
+application.prototype.save_hd = async function(type, data, fname, fdate, gender, dur, score, addsco, title) {
     var fn = Utils.escape_RegExp(fname);
     var fd = Utils.escape_RegExp(fdate);
 
@@ -77,7 +78,9 @@ application.prototype.save_hd = async function(type, data, fname, fdate, gender,
         fdate: fd,
         gender: gender,
         dur: dur,
-        score: score
+        score: score,
+        addsco: addsco,
+        title: title
     };
     return new Promise((resolve, reject) => {
 

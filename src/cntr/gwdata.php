@@ -44,6 +44,8 @@ function gwdata($r) {
     returnResult($res);
 }
 
+// .............................................................................
+
 function DrawTable($header, $data, $t)
 {
     // Column widths
@@ -94,6 +96,7 @@ function save_pdf($r) {
     $sec = $dur % 60;
     $score = $r['score'];
     $title = $r['title'];
+    $addsco = $r['addsco']?? 0;
 
     $sdur = "$min min $sec sec";
 
@@ -112,141 +115,109 @@ function save_pdf($r) {
     $pdf->AddPage();
     $pdf->SetFont('Arial','B',16);
     $gg = $gender==='' ? '' : ' (' . $gender . ')';
-    $pdf -> Cell(0, 10, 'Opioid Risk Tool ' . $gg , 0, 1, 'C');
+    $pdf -> Cell(0, 10, $title . ' ' . $gg , 0, 1, 'C');
 
     $pdf -> Cell(0, 10, '[' . $type . $g.']', 0, 1, 'C');
 
     //$pdf->Output('F', $filename . '.pdf', true);
 
     $pdf->SetFont('Arial','', 8);
-// begin ort stuff
+
     $pdf->SetXY(10, 36);
     $pdf -> Cell(0, 0, 'Patient: ' . $fname, 0, 1, 'L');
-    $pdf->SetXY(130, 36);
-    $pdf -> Cell(0, 0, 'Provider: Cheryle Hart MD', 0, 1, 'L');
 
-    $pdf->SetXY(10, 40);
-    $pdf -> Cell(0, 0, 'Location: Main Office', 0, 1, 'L');
-    $pdf->SetXY(130, 40);
-    $pdf -> Cell(0, 0, 'Battery ID 0000', 0, 1, 'L');
+// begin ort stuff
+    if ($type === 'ORT') {
+        $pdf->SetXY(130, 36);
+        $pdf->Cell(0, 0, 'Provider: Cheryle Hart MD', 0, 1, 'L');
 
+        $pdf->SetXY(10, 40);
+        $pdf->Cell(0, 0, 'Location: Main Office', 0, 1, 'L');
+        $pdf->SetXY(130, 40);
+        $pdf->Cell(0, 0, 'Battery ID 0000', 0, 1, 'L');
 
-    $pdf->SetXY(10, 44);
-    $pdf -> Cell(0, 0, 'Started: ' . $fdate, 0, 1, 'L');
-    $pdf->SetXY(130, 44);
-    $pdf -> Cell(0, 0, 'Test Duration: ' . $sdur, 0, 1, 'L');
+        $pdf->SetXY(10, 44);
+        $pdf->Cell(0, 0, 'Started: ' . $fdate, 0, 1, 'L');
+        $pdf->SetXY(130, 44);
+        $pdf->Cell(0, 0, 'Test Duration: ' . $sdur, 0, 1, 'L');
 
-    $pdf->SetXY(10, 50);
+        $pdf->SetXY(10, 50);
 
-    $pdf->SetFont('Arial','',12);
-    $pdf -> Cell(0, 10,'Assessment Results', 0, 1, 'L');
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->Cell(0, 10, 'Assessment Results', 0, 1, 'L');
 
-    $pdf->SetFont('Arial','B',7);
-    $pdf -> Cell(0, 4, '1) Please clearly state the medical need for administering this assessment:', 0, 1, 'L');
-    $pdf->SetFont('Arial','',7);
-    $pdf -> Cell(0, 4, 'See patient record for medical necessity', 0, 1, 'L');
-    $pdf -> Ln();
+        $pdf->SetFont('Arial', 'B', 7);
+        $pdf->Cell(0, 4, '1) Please clearly state the medical need for administering this assessment:', 0, 1, 'L');
+        $pdf->SetFont('Arial', '', 7);
+        $pdf->Cell(0, 4, 'See patient record for medical necessity', 0, 1, 'L');
+        $pdf->Ln();
 
-    $pdf->SetFont('Arial','B',7);
+        $pdf->SetFont('Arial', 'B', 7);
 
-    $pdf -> Cell(0, 4, '2) Describe the pertinent findings of of the assessment', 0, 1, 'L');
-    $pdf->SetFont('Arial','',7);
-    $pdf -> Cell(0, 4, 'Total: ' . $score, 0, 1, 'L');
+        $pdf->Cell(0, 4, '2) Describe the pertinent findings of of the assessment', 0, 1, 'L');
+        $pdf->SetFont('Arial', '', 7);
+        $pdf->Cell(0, 4, 'Total: ' . $score, 0, 1, 'L');
 
-    $pdf -> Ln();
-    $pdf -> Cell(0, 4, 'The ORT may identify patients at high risk for misuse, '
-            . 'and who might benefit more from other modalities of plan control'
-            . ' besides narcotics (prinarily applicable with chronic pain', 0, 1, 'L');
+        $pdf->Ln();
+        $pdf->Cell(0, 4, 'The ORT may identify patients at high risk for misuse, '
+                . 'and who might benefit more from other modalities of plan control'
+                . ' besides narcotics (prinarily applicable with chronic pain', 0, 1, 'L');
 
-    $pdf -> Ln();
-    $pdf -> SetX(40);
-    $pdf -> Cell(0, 4, 'Score of 0-3 Low Risk of Opioid Addiction', 0, 1, 'L');
-    $pdf -> SetX(40);
-    $pdf -> Cell(0, 4, 'Score of 4-7 Moderate Risk of Opioid Addiction', 0, 1, 'L');
-    $pdf -> SetX(40);
-    $pdf -> Cell(0, 4, 'Score of >= 8 High Risk of Opioid Addiction', 0, 1, 'L');
+        $pdf->Ln();
+        $pdf->SetX(40);
+        $pdf->Cell(0, 4, 'Score of 0-3 Low Risk of Opioid Addiction', 0, 1, 'L');
+        $pdf->SetX(40);
+        $pdf->Cell(0, 4, 'Score of 4-7 Moderate Risk of Opioid Addiction', 0, 1, 'L');
+        $pdf->SetX(40);
+        $pdf->Cell(0, 4, 'Score of >= 8 High Risk of Opioid Addiction', 0, 1, 'L');
 
-    $pdf -> Ln();
+        $pdf->Ln();
 
-    $pdf->SetFont('Arial','B',7);
+        $pdf->SetFont('Arial', 'B', 7);
 
-    $pdf -> Cell(0, 4, '3) Please state the plan of treatment as a result of the assessment:', 0, 1, 'L');
-    $pdf->SetFont('Arial','',7);
-    $pdf -> Cell(0, 4, 'See patient record for medical findings', 0, 1, 'L');
-    $pdf -> Ln();
+        $pdf->Cell(0, 4, '3) Please state the plan of treatment as a result of the assessment:', 0, 1, 'L');
+        $pdf->SetFont('Arial', '', 7);
+        $pdf->Cell(0, 4, 'See patient record for medical findings', 0, 1, 'L');
+        $pdf->Ln();
+    }
 // end ort stuff
+    else {
+
+        $pdf->SetXY(10, 44);
+        $pdf->Cell(0, 0, 'Started: ' . $fdate, 0, 1, 'L');
+        $pdf->SetXY(130, 44);
+        $pdf->Cell(0, 0, 'Test Duration: ' . $sdur, 0, 1, 'L');
+
+        $pdf->Cell(0, 4, 'Total: ' . $score, 0, 1, 'L');
+
+    }
 
     $pdf->SetFont('Arial','B',14);
     $pdf -> Cell(0, 10, 'QUESTIONS', 0, 1, 'L');
 
     $pdf->SetFont('Arial','', 9);
+    $acnt = 1;
     foreach($data as $d) {
-        $pdf -> Cell(0, 4, $d['text'], 0, 1, 'L');
-        $pdf -> Cell(0, 8, $d['answer'], 0, 1, 'L');
+        if($d['text'])
+            $pdf -> Cell(0, 4, $d['text'], 0, 1, 'L');
+        else
+            $pdf -> Cell(0, 4, $acnt .')', 0, 1, 'L');
+
+        $aa = 0;
+
+        if($d['answer'] === 'yes' || $d['answer'] === 'no') { // actual answer can be  more than 0 () hd type or yes/no (mn type)
+            $aa = $d['answer'];
+        } else {
+            $aa = '' . ((intval($d['answer']) - 1) + $addsco);
+        }
+        $pdf -> Cell(0, 8, '' . $aa, 0, 1, 'L');
+        $acnt ++;
         //$pdf -> Ln();
     }
 
     $s = $pdf->Output('S', $filename . '', true);
     file_put_contents($filename . '_' . $type . '.pdf', $s);
- /*
-    $pdf = new FPDF();
-    $pdf->AddPage();
-    $pdf->SetFont('Arial','B',16);
-    $pdf -> Cell(0, 10, 'Opioid Risk Tool (' . $gender . ')', 0, 1, 'C');
-    $pdf -> Cell(0, 10, '[ORT'.$g.']', 0, 1, 'C');
 
-    $pdf->SetFont('Arial','',13);
-    $pdf -> Cell(64, 8, 'Name: ' . $fname , 0, 0, 'L');
-    $pdf -> Cell(40, 8, 'Date: '. $fdate , 0, 1, 'L');
-
-
-    $h = [
-       ['Mark each box that applies', 60],
-       ['', 64],
-       ['Female', 14],
-       ['Male', 14]
-    ];
-
-    $d = [
-        ['1) Family history of substance abuse','Alcohol','['.
-            rspd($data[0],'Female', $gender) .']',
-                '['. rspd($data[0],'Male', $gender) .']', false],
-        ['','Illegal drugs','['. rspd($data[1],'Female', $gender) .']','['.
-            rspd($data[1],'Male', $gender) .']', false],
-        ['','Prescription drugs','['. rspd($data[2],'Female', $gender) .']','['.
-            rspd($data[2],'Male', $gender) .']', false],
-
-        ['2) Personal history of substance abuse','Alcohol','['.
-            rspd($data[3],'Female', $gender) .']',
-                '['. rspd($data[3],'Male', $gender) .']', true],
-        ['','Illegal drugs','['. rspd($data[4],'Female', $gender) .']','['.
-            rspd($data[4],'Male', $gender) .']', false],
-        ['','Prescription drugs','['. rspd($data[5],'Female', $gender) .']','['.
-            rspd($data[5],'Male', $gender) .']', FALSE],
-
-        ['3) Age (mark box if 16-45 year','','['.
-            rspd($data[6],'Female', $gender) .']','['. rspd($data[6],'Male', $gender) .']', true],
-        ['4) History of preadolescent sexual abuse','','['.
-            rspd($data[7],'Female', $gender) .']','['. rspd($data[7],'Male', $gender) .']', true],
-
-        ['5) Psychologic Desease',"Attention deficit/hyperactivity disorder",'['.
-            rspd($data[8],'Female', $gender) .']','['. rspd($data[8],'Male', $gender) .']', true],
-        ['',"Obsessive-compulsive disorder",'['.
-            rspd($data[8],'Female', $gender) .']','['. rspd($data[8],'Male', $gender) .']', false],
-        ['',"Bipolar disorder",'['.
-            rspd($data[8],'Female', $gender) .']','['. rspd($data[8],'Male', $gender) .']', false],
-        ['',"Schizophrenia",'['.
-            rspd($data[8],'Female', $gender) .']','['. rspd($data[8],'Male', $gender) .']', false],
-        ['',"Depression",'['.
-            rspd($data[9],'Female', $gender) .']','['. rspd($data[9],'Male', $gender) .']', FALSE],
-        ['_last','','','', TRUE]
-    ];
-
-    DrawTable($h, $d, $pdf);
-
-    $s = $pdf->Output('S', $filename . '', true);
-    file_put_contents($filename . '_ort.pdf', $s);
- */
     return $filename;
 
 }

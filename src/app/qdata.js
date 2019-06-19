@@ -949,6 +949,76 @@ var  qBdi = function() {
                             {text:"I believe that I look ugly", val: 4}
                         ],
                     answer: false
+                    },
+                    {
+                        text: "",//15
+                        answers: [
+                            {text:"I can work about as well as before", val: 1},
+                            {text:"It takes an extra effort to get started at doing something", val: 2},
+                            {text:"I have to push myself very hard to do anything", val: 3},
+                            {text:"I can't do any work at all", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//16
+                        answers: [
+                            {text:"I can sleep as well as usual", val: 1},
+                            {text:"I don't sleep as well as I used to", val: 2},
+                            {text:"I wake up 1 -2 hours earlier than usual and find it hard to get back to sleep", val: 3},
+                            {text:"I wake up several hours earlier than I used to and cannot get back to sleep", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//17
+                        answers: [
+                            {text:"I don't get more tired than usual", val: 1},
+                            {text:"I get tired more easily than I used to", val: 2},
+                            {text:"I get tired from doing almost anything", val: 3},
+                            {text:"I am too tired to do anything", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//18
+                        answers: [
+                            {text:"My appetite is no worse than usual", val: 1},
+                            {text:"My appetite is not as good as it used to be", val: 2},
+                            {text:"My appetite is much worse now", val: 3},
+                            {text:"I have no appetite at all anymore", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//19
+                        answers: [
+                            {text:"I haven't lost much weight, if any, lately", val: 1},
+                            {text:"I have lost more than five pounds", val: 2},
+                            {text:"I have lost more than ten pounds", val: 3},
+                            {text:"I have lost more than fifteen pounds", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//20
+                        answers: [
+                            {text:"I am no more worried about my health than usual", val: 1},
+                            {text:"I am worried about physical problems like aches, pains, upset stomach, or constipation", val: 2},
+                            {text:"I am very worried about physical problems and it's hard to think of much else", val: 3},
+                            {text:"I am so worried about my physical problems that I cannot think of anything else", val: 4}
+                        ],
+                    answer: false
+                    },
+                    {
+                        text: "",//21
+                        answers: [
+                            {text:"I have not noticed any recent change in my interest in sex.", val: 1},
+                            {text:"I am less interested in sex than I used to be", val: 2},
+                            {text:"I have almost no interest in sex", val: 3},
+                            {text:"I have lost interest in sex completely", val: 4}
+                        ],
+                    answer: false
                     }
 
                 ],

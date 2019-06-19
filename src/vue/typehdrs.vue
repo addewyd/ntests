@@ -194,6 +194,7 @@ export default {
         aclick: function(v) {
             console.log("aclick", v);
             this.qData[this.state-1].answer = v;
+            // this.qData[this.state-1].answertext = ?;
         },
         toadmin: async function() {
 
@@ -218,6 +219,7 @@ export default {
                     this.gender,
                     this.endt - this.startt,
                     this.score,
+                    this.oData.addsco,
                     this.oData.title
             );
             var p = saveresult.files
