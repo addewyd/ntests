@@ -54,6 +54,8 @@ function DrawTable($header, $data, $t)
     // Header
         $t->SetFont('Arial','B', 9);
 
+    $rlen = count($header);
+
     foreach($header as $h) {
         $t->Cell($h[1],7,$h[0],1,0,'C');
     }
@@ -64,16 +66,20 @@ function DrawTable($header, $data, $t)
     foreach($data as $row)
     {
         if($row[0] == '_last') {
-            $t->Cell($header[0][1],0,'','T');
-            $t->Cell($header[1][1],0,'','T');
-            $t->Cell($header[2][1],0,'','T');
-            $t->Cell($header[3][1],0,'','T');
+            for($i = 0; $i < $rlen; $i ++) {
+                $t->Cell($header[$i][1],0,'','T');
+            }
+            //$t->Cell($header[1][1],0,'','T');
+            //$t->Cell($header[2][1],0,'','T');
+            //$t->Cell($header[3][1],0,'','T');
         }
         else {
-            $t->Cell($header[0][1],6,$row[0], $row[4]? 'LTR':'LR');
-            $t->Cell($header[1][1],6,$row[1],$row[4]? 'LTR':'LR');
-            $t->Cell($header[2][1],6,$row[2],$row[4]? 'LTR':'LR');
-            $t->Cell($header[3][1],6,$row[3],$row[4]? 'LTR':'LR');
+            for($i = 0; $i < $rlen; $i ++) {
+                $t->Cell($header[$i][1],6,$row[$i], $row[$rlen]? 'LTR':'LR');
+            }
+            //$t->Cell($header[1][1],6,$row[1],$row[4]? 'LTR':'LR');
+            //$t->Cell($header[2][1],6,$row[2],$row[4]? 'LTR':'LR');
+            //$t->Cell($header[3][1],6,$row[3],$row[4]? 'LTR':'LR');
             $t->Ln();
         }
     }
@@ -84,7 +90,7 @@ function rspd($x, $g, $gn) {
         return 'X';
     else return ' ';
 }
-
+// types ORT GDS HDRS PHQ9 SDS EPDS BDI
 function save_pdf($r) {
     $type = $r['type'];
     $fname = $r['fname'];
@@ -195,14 +201,28 @@ function save_pdf($r) {
     $pdf->SetFont('Arial','B',14);
     $pdf -> Cell(0, 10, 'QUESTIONS', 0, 1, 'L');
 
+    //  answers
     $pdf->SetFont('Arial','', 9);
     $acnt = 1;
+    $maxtlen = 100;
     foreach($data as $d) {
-        if($d['text'])
-            $pdf -> Cell(0, 4, $d['text'], 0, 1, 'L');
-        else
+        if($d['text']) {
+            $text = $d['text'];
+            while(TRUE) {
+                $tlen = strlen($text);
+                if($tlen <= $maxtlen) {
+                    $pdf -> Cell(0, 4, $text, 0, 1, 'L');
+                    break;
+                } else {
+                    $t = substr($text, 0, $maxtlen);
+                    $pdf -> Cell(0, 4, $t, 0, 1, 'L');
+                    $text = substr($text, $maxtlen);
+                }
+            }
+        }
+        else {
             $pdf -> Cell(0, 4, $acnt .')', 0, 1, 'L');
-
+        }
         $aa = 0;
 
         if($d['answer'] === 'yes' || $d['answer'] === 'no') { // actual answer can be  more than 0 () hd type or yes/no (mn type)
@@ -213,6 +233,22 @@ function save_pdf($r) {
         $pdf -> Cell(0, 8, '' . $aa, 0, 1, 'L');
         $acnt ++;
         //$pdf -> Ln();
+    }
+
+    if($type == 'PHQ9') {
+
+        $h = [['',75], ['Not at all',15], ['Several days',24],
+            ['More than half the days',36], ['Nearly every day', 26]];
+        $t = [];
+        foreach($data as $d) {
+            $a = [ substr($d['text'], 0, 50),' ',' ',' ',' ', TRUE];
+            $u = intval($d['answer']);
+            $a[$u] = 'X';
+            array_push($t, $a);
+        }
+        $a = ['_last', '','','', '', TRUE];
+        array_push($t, $a);
+        DrawTable($h, $t, $pdf);
     }
 
     $s = $pdf->Output('S', $filename . '', true);
